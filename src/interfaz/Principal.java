@@ -5,7 +5,7 @@
  */
 
 package interfaz;
-
+import clases.Persona;
 /**
  *
  * @author karrieta9
@@ -15,6 +15,8 @@ public class Principal extends javax.swing.JFrame {
     /**
      * Creates new form Principal
      */
+    Persona v[]=new Persona[5];
+    int cont=0;
     public Principal() {
         initComponents();
     }
@@ -74,6 +76,11 @@ public class Principal extends javax.swing.JFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cmdGuardar.setText("Guardar");
+        cmdGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdGuardarActionPerformed(evt);
+            }
+        });
         jPanel3.add(cmdGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
         cmdMostrar.setText("Mostrar");
@@ -91,9 +98,9 @@ public class Principal extends javax.swing.JFrame {
         txtResultado.setRows(5);
         jScrollPane1.setViewportView(txtResultado);
 
-        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 210, 110));
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 260, 110));
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 260, 160));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 300, 160));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -109,6 +116,20 @@ public class Principal extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cmdGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdGuardarActionPerformed
+     Persona p;
+     long identificacion;
+     String primer_nombre,primer_apellido;
+     
+     identificacion= Long.parseLong(txtIdentificacion.getText());
+     primer_nombre= txtPrimerNombre.getText();
+     primer_apellido= txtPrimerApellido.getText();
+     
+     p= new Persona(identificacion,primer_nombre,primer_apellido);
+     v[cont]=p;
+     cont++;
+    }//GEN-LAST:event_cmdGuardarActionPerformed
 
     /**
      * @param args the command line arguments
